@@ -59,7 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
         separatorBuilder: (context, index) => const Divider(),
         itemBuilder: (context, i) => ListTile(
           leading: Image.asset('assets/png/Eric-cartman.png'),
-        ),),
+        ),
+      ),
     );
   }
 }
