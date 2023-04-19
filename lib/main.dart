@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const SouthParkApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SouthParkApp extends StatelessWidget {
+  const SouthParkApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +13,24 @@ class MyApp extends StatelessWidget {
       title: 'South Park',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 31, 31, 31),
+        dividerColor: Colors.white24,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color.fromARGB(255, 31, 31, 31),
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        listTileTheme: const ListTileThemeData(iconColor: Colors.white),
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+            fontSize: 20,
+          ),
+        ),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -31,21 +49,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('South Park'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'South Park',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
+      body: ListView.separated(
+        itemCount: 10,
+        separatorBuilder: (context, index) => const Divider(),
+        itemBuilder: (context, i) => ListTile(
+          leading: Image.asset('assets/png/Eric-cartman.png'),
+        ),),
     );
   }
 }
