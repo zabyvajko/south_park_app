@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:south_park_app/features/characters_list/widgets/widgets.dart';
+import 'package:south_park_app/repositories/characters/characters_repository.dart';
 
 class CharactersListScreen extends StatefulWidget {
   const CharactersListScreen({super.key});
@@ -22,8 +23,12 @@ class _CharactersListScreenState extends State<CharactersListScreen> {
             const characterName = '123';
             return const CharactersTile(characterName: characterName);
           }),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.download),
+        onPressed: () {
+          CharactersRepository().getCharactersList();
+        },
+      ),
     );
   }
 }
-
-
