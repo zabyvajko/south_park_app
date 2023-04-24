@@ -1,17 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:south_park_app/repositories/characters/models/characters.dart';
 
 class CharactersRepository {
-  Future<List<Map<String, dynamic>>> getCharactersList() async {
+  Future<List<Characters>> getCharactersList() async {
     final response = await Dio().get('https://spapi.dev/api/characters');
-    List<Map<String, dynamic>> characterList =
+    final data =
         List<Map<String, dynamic>>.from(response.data['data']);
-    List<Map<String, dynamic>> filteredList = characterList
-        .map((e) => {
-              'id': e['id'],
-              'name': e['name'],
-              'sex': e['sex'],
-            })
-        .toList();
-    return filteredList;
+    final characterList = data.map((e) {
+       return Characters(id: e['id'], name: e['name'], sex: e['sex'],);
+      
+    }).toList();
+    return characterList;
   }
 }
