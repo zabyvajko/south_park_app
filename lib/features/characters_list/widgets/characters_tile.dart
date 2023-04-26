@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:south_park_app/repositories/characters/models/characters_name.dart';
 
 class CharactersTile extends StatelessWidget {
   const CharactersTile({
@@ -6,7 +7,7 @@ class CharactersTile extends StatelessWidget {
     required this.characterName,
   });
 
-  final String characterName;
+  final CharactersName characterName;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class CharactersTile extends StatelessWidget {
         width: 30,
       ),
       title: Text(
-        characterName,
+        characterName.name,
         style: theme.textTheme.bodyMedium,
       ),
       trailing: const Icon(Icons.arrow_forward_ios),
